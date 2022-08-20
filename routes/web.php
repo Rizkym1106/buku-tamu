@@ -3,7 +3,10 @@
 use App\Http\Controllers\admin\BukuTamuController;
 use App\Http\Controllers\admin\ContentController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\SurveyKepuasanController;
 use App\Http\Controllers\admin\UserController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +21,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login.index');
 });
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-Route::get('manajemen_buku_tamu', [BukuTamuController::class, 'index'])->name('manajemen_buku_tamu.index');
-Route::get('user', [UserController::class, 'index'])->name('user.index');
+Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']], function(){
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/manajemen_buku_tamu', [BukuTamuController::class, 'index'])->name('manajemen_buku_tamu.index');
+    Route::get('/survey_kepuasan_tamu', [SurveyKepuasanController::class, 'index'])->name('survey_kepuasan_tamu.index');
+});
 
+Route::group(['prefix' => 'login'], function(){
+    Route::get('/', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/postLogin', [LoginController::class, 'authenticate'])->name('login.authenticate');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+});

@@ -52,6 +52,13 @@
                   Manajemen Buku Tamu
                 </p>
               </a>
+              <li class="nav-item">
+                <a href="{{ route("survey_kepuasan_tamu.index") }}" class="nav-link {{ (request()->routeIs('survey_kepuasan_tamu.index')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-poll-h"></i>
+                  <p>
+                    Survey Keputusan Tamu
+                  </p>
+                </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('user.index') }}" class="nav-link {{ (request()->routeIs('user.index')) ? 'active' : '' }}">
