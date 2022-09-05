@@ -29,6 +29,13 @@ Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/manajemen_buku_tamu', [BukuTamuController::class, 'index'])->name('manajemen_buku_tamu.index');
     Route::get('/survey_kepuasan_tamu', [SurveyKepuasanController::class, 'index'])->name('survey_kepuasan_tamu.index');
+    
+    Route::group(['prefix' => 'user'], function(){
+        Route::get('/', [UserController::class, 'index'])->name('user.index');
+        Route::get('/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('/store', [UserController::class, 'store'])->name('user.store');
+
+    });
 });
 
 Route::group(['prefix' => 'login'], function(){
