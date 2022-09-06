@@ -11,7 +11,7 @@ class SurveyKepuasanController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index()
     {
         return view('admin.survey_kepuasan_tamu.index');

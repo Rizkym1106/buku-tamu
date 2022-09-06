@@ -16,7 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $user = User::all();
+        $role = Role::all();
+        $data = [
+            'user' => $user,
+            'role' => $role,
+        ];
+        return view('admin.user.index', $data);
     }
 
     /**
@@ -46,6 +52,15 @@ class UserController extends Controller
             'username' => 'required|unique:users,username',
             'password' => 'required',
             'role_id' => 'required',
+        ], [
+            'nama.required' => 'Nama Harus Diisi',
+            'nama.min' => 'Nama Minimal 5 Karakter',
+            'nama.max' => 'Nama Maksimal 20 Karakter',
+            'username.required' => 'Username Harus Diisi',
+            'username.unique' => 'Username Telah Ada',
+            'password.required' => 'Password Harus Diisi',
+            'role_id.required' => 'Role Harus Diisi',
+
         ]);
 
         $user=new User;
@@ -79,7 +94,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataAdmin = User::findOrFail($id);
+        $role = Role::all();
+        return view('admin.user.edit', compact('role', 'dataAdmin'));
     }
 
     /**
@@ -91,7 +108,32 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataAdmin = User::findOrFail($id);
+        $this->validate($request, [
+            'nama' => 'required|min:5|max:20',
+            'username' => 'required|unique:users,username',
+            'password' => 'required',
+            'role_id' => 'required',
+        ], [
+            'nama.required' => 'Nama Harus Diisi',
+            'nama.min' => 'Nama Minimal 5 Karakter',
+            'nama.max' => 'Nama Maksimal 20 Karakter',
+            'username.required' => 'Username Harus Diisi',
+            'username.unique' => 'Username Telah Ada',
+            'password.required' => 'Password Harus Diisi',
+            'role_id.required' => 'Role Harus Diisi',
+
+        ]);
+
+        $user= user::findOrFail($id);
+        $user->nama = $request->nama;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->role_id = $request->role_id;
+
+        $user->save();
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -102,6 +144,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index');
     }
 }
