@@ -56,7 +56,7 @@
                 <a href="{{ route("survey_kepuasan_tamu.index") }}" class="nav-link {{ (request()->routeIs('survey_kepuasan_tamu.index')) ? 'active' : '' }}">
                   <i class="nav-icon fas fa-poll-h"></i>
                   <p>
-                    Survey Keputusan Tamu
+                    Survey Kepuasan Tamu
                   </p>
                 </a>
             </li>

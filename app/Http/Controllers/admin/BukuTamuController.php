@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Bukutamu;
+use File;
 
 class BukuTamuController extends Controller
 {
@@ -14,7 +16,12 @@ class BukuTamuController extends Controller
      */
     public function index()
     {
-        return view('admin.manajemen_buku_tamu.index');
+        $bukuTamu = Bukutamu::all();
+
+        $data = [
+            'bukuTamu' => $bukuTamu
+        ];
+        return view('admin.manajemen_buku_tamu.index', $data);
     }
 
     /**
@@ -24,7 +31,7 @@ class BukuTamuController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.manajemen_buku_tamu.create');
     }
 
     /**
@@ -35,7 +42,37 @@ class BukuTamuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required|min:5|max:20',
+            'alamat' => 'required',
+            'waktu_kedatangan' => 'required',
+            'telfon' => 'required',
+            'foto' => 'required|mimes:jpeg,png,jpg'
+        ], [
+            'nama.required' => 'Nama Harus Diisi',
+            'nama.min' => 'Nama Minimal 5 Karakter',
+            'nama.max' => 'Nama Maksimal 20 Karakter',
+            'waktu_kedatangan.required' => 'Waktu Kedatangan Harus Diisi',
+            'telfon.required' => 'Nomor Telfon Harus Diisi',
+            'foto.required' => 'Foto Harus diupload'
+        ]);
+
+        $bukuTamu= new Bukutamu;
+        $bukuTamu->nama = $request->nama;
+        $bukuTamu->alamat = $request->alamat;
+        $bukuTamu->waktu_kedatangan = $request->waktu_kedatangan;
+        $bukuTamu->telfon = $request->telfon;
+
+        if($request->foto){
+            $namaFile = 'Foto'.'__'.time().'__'.$request->foto->getClientOriginalName();
+            $path = 'public/foto';
+            $request->foto->storeAs($path, $namaFile);
+            $bukuTamu->foto = $namaFile;
+        }
+
+        $bukuTamu->save();
+
+        return redirect()->route('manajemen_buku_tamu.index');
     }
 
     /**
@@ -80,6 +117,12 @@ class BukuTamuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bukuTamu = Bukutamu::findOrFail($id);
+        if ($bukuTamu->foto){
+            File::delete('storage/foto/'.$bukuTamu->foto);
+        }
+        $bukuTamu->delete();
+
+        return redirect()->route('manajemen_buku_tamu.index');
     }
 }

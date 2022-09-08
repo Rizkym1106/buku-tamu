@@ -26,26 +26,34 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::get('/user', [UserController::class, 'index'])->name('user.index');
-    
-    Route::get('/survey_kepuasan_tamu', [SurveyKepuasanController::class, 'index'])->name('survey_kepuasan_tamu.index');
     
     Route::group(['prefix' => 'user'], function(){
         Route::get('/', [UserController::class, 'index'])->name('user.index');
         Route::get('/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('/store', [UserController::class, 'store'])->name('user.store');
         Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
         Route::post('/update{id}', [UserController::class, 'update'])->name('user.update');
         Route::get('/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
-        Route::post('/store', [UserController::class, 'store'])->name('user.store');
 
     });
 
     Route::group(['prefix' => 'manajemen_buku_tamu'], function(){
         Route::get('/', [BukuTamuController::class, 'index'])->name('manajemen_buku_tamu.index');
         Route::get('/create', [BukuTamuController::class, 'create'])->name('manajemen_buku_tamu.create');
-        Route::get('/edit/{id}', [BukuTamuController::class, 'edit'])->name('manajemen_buku_tamu.edit');
-        Route::get('/destroy/{id}', [BukuTamuController::class, 'destroy'])->name('manajemen_buku_tamu.destroy');
         Route::post('/store', [BukuTamuController::class, 'store'])->name('manajemen_buku_tamu.store');
+        Route::get('/edit/{id}', [BukuTamuController::class, 'edit'])->name('manajemen_buku_tamu.edit');
+        Route::get('/update{id}', [BukuTamuController::class, 'update'])->name('manajemen_buku_tamu.update');
+        Route::get('/destroy/{id}', [BukuTamuController::class, 'destroy'])->name('manajemen_buku_tamu.destroy');
+
+    });
+
+    Route::group(['prefix' => 'survey_kepuasan_tamu'], function(){
+        Route::get('/', [SurveyKepuasanController::class, 'index'])->name('survey_kepuasan_tamu.index');
+        Route::get('/create', [SurveyKepuasanController::class, 'create'])->name('survey_kepuasan_tamu.create');
+        Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey_kepuasan_tamu.store');
+        Route::get('/edit/{id}', [SurveyKepuasanController::class, 'edit'])->name('survey_kepuasan_tamu.edit');
+        Route::get('/update{id}', [SurveyKepuasanController::class, 'update'])->name('survey_kepuasan_tamu.update');
+        Route::get('/destroy/{id}', [SurveyKepuasanController::class, 'destroy'])->name('survey_kepuasan_tamu.destroy');
 
     });
 });
