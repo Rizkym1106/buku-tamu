@@ -65,7 +65,7 @@ class BukuTamuController extends Controller
 
         if($request->foto){
             $namaFile = 'Foto'.'__'.time().'__'.$request->foto->getClientOriginalName();
-            $path = 'public/foto';
+            $path = 'public/buku_tamu';
             $request->foto->storeAs($path, $namaFile);
             $bukuTamu->foto = $namaFile;
         }
@@ -94,7 +94,10 @@ class BukuTamuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=[
+            'pertanyaan' => $pertanyaan
+        ];
+        return view('edit', $data);
     }
 
     /**
@@ -119,7 +122,7 @@ class BukuTamuController extends Controller
     {
         $bukuTamu = Bukutamu::findOrFail($id);
         if ($bukuTamu->foto){
-            File::delete('storage/foto/'.$bukuTamu->foto);
+            File::delete('storage/buku_tamu/'.$bukuTamu->foto);
         }
         $bukuTamu->delete();
 

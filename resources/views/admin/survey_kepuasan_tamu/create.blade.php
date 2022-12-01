@@ -18,7 +18,7 @@
                     </div>
                     @endif
                     <!-- form validasi -->
-                    <form action="{{ route('manajemen_buku_tamu.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('survey_kepuasan_tamu.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="nama">Nama </label>

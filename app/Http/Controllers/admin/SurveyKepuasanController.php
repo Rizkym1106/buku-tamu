@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BukuTamu;
+use App\Models\ReviewRespon;
 use Illuminate\Http\Request;
 
 class SurveyKepuasanController extends Controller
@@ -14,7 +16,12 @@ class SurveyKepuasanController extends Controller
      */ 
     public function index()
     {
-        return view('admin.survey_kepuasan_tamu.index');
+        $respon = ReviewRespon::with('respon')->with('pertanyaan')->with('buku_tamu')->get();
+        $data = [
+            'hasil' => $respon
+        ];
+        // dd($data);
+        return view('admin.survey_kepuasan_tamu.index', $data);
     }
 
     /**
@@ -35,7 +42,23 @@ class SurveyKepuasanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $data = new BukuTamu;
+
+        $data->nama = $request->nama;
+        $data->alamat = $request->alamat;
+        $data->waktu_kedatangan = $request->waktu_kedatangan;
+        $data->telfon = $request->telfon;
+
+        if(isset($request->foto)) {
+            $namaFile = 'foto_'.time().$request->foto->getClientOriginalName();
+            $path = 'public/buku_tamu';
+            $request->foto->storeAs($path, $namaFile);
+            $data->foto = $namaFile;
+        }
+
+        $data->save();
+        return redirect()->route('dashboard.pertanyaan', ['id' => $data->id]);
     }
 
     /**

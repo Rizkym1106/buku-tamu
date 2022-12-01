@@ -19,23 +19,21 @@
                     <th>Alamat</th>
                     <th>Waktu Kedatangan</th>
                     <th>Telfon</th>
-                    <th>Aksi</th>
                 </tr>
                 </thead> 
                 <tbody>
                     @foreach ($bukuTamu as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img width="100px" height="100px" src="{{asset('storage/foto/'.$item->foto)}}" alt=""></td>
+                            <td>
+                                @if($item->foto)
+                                <img width="100px" height="100px" src="{{asset('storage/buku_tamu/'.$item->foto)}}" alt="">
+                                @endif
+                            </td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ Carbon\Carbon::parse($item->waktu_kedatangan)->isoFormat('DD MMMM Y') }}</td>
                             <td>{{ $item->telfon }}</td>
-                            <td>
-                                <a class="badge badge-danger m-1" href="{{ route('manajemen_buku_tamu.destroy', $item->id) }}" onclick=" return confirm('Apakah anda ingin menghapus data ini?')">
-                                    <span class="fa fa-trash"></span> Hapus
-                                </a>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

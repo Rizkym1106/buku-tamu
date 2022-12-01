@@ -4,11 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\pertanyaan;
-use App\Models\respon;
-use App\Models\ReviewRespon;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class PertanyaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,38 +15,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
-    }
-
-    public function homepage()
-    {
-        return view('home.home.index');
-    }
-
-    public function survey()
-    {
-        return view('admin.dashboard.survey');
-    }
-
-    public function pertanyaan($id) {
+        $pertanyaan = pertanyaan::all();
+        
         $data = [
-            'id' => $id,
-            'pertanyaans' => pertanyaan::all(),
-            'respons' => respon::all(),
+            'pertanyaan' => $pertanyaan
         ];
-        return view('admin.dashboard.pertanyaan', $data);
-    }
-
-    public function hasil(Request $request, $id) {
-
-        foreach($request->pertanyaan as $key => $value) {
-            $data = new ReviewRespon;
-            $data->pertanyaan_id = $value;
-            $data->buku_tamu_id = $request->buku_tamu_id;
-            $data->respon_id = $request['respon'][$key];
-            $data->save();
-        }
-        return redirect()->route('dashboard.homepage');
+        return view('admin.pertanyaan.index', $data);
     }
 
     /**
@@ -58,7 +30,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pertanyaan.create');
     }
 
     /**
@@ -69,7 +41,18 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'pertanyaan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $pertanyaan= new pertanyaan;
+        $pertanyaan->pertanyaan = $request->pertanyaan;
+        $pertanyaan->keterangan = $request->keterangan;
+
+        $pertanyaan->save();
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**
@@ -91,7 +74,10 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'datas' => pertanyaan::where('id', $id)->first(),
+        ];
+        return view('admin.pertanyaan.edit', $data);
     }
 
     /**
@@ -103,7 +89,19 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'pertanyaan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $pertanyaan = pertanyaan::where('id', $id)->first();
+
+        $pertanyaan->pertanyaan = $request->pertanyaan;
+        $pertanyaan->keterangan = $request->keterangan;
+
+        $pertanyaan->save();
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**
@@ -114,6 +112,9 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pertanyaan = Pertanyaan::findOrFail($id);
+        $pertanyaan->delete();
+
+        return redirect()->route('pertanyaan.index');
     }
 }
