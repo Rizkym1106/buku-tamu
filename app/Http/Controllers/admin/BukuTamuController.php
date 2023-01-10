@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bukutamu;
-use File;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BukuTamuExport;
 
 class BukuTamuController extends Controller
 {
@@ -29,6 +30,10 @@ class BukuTamuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function bukutamuexport(){
+        return Excel::download(new BukuTamuExport, 'bukutamu.xlsx');
+    }
+
     public function create()
     {
         return view('admin.manajemen_buku_tamu.create');

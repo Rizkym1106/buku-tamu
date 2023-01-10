@@ -51,6 +51,7 @@ Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']
 
     Route::group(['prefix' => 'manajemen_buku_tamu'], function(){
         Route::get('/', [BukuTamuController::class, 'index'])->name('manajemen_buku_tamu.index');
+        Route::get('/exportbukutamu', [BukuTamuController::class, 'bukutamuexport'])->name('buku_tamu.export');
         Route::get('/create', [BukuTamuController::class, 'create'])->name('manajemen_buku_tamu.create');
         Route::post('/store', [BukuTamuController::class, 'store'])->name('manajemen_buku_tamu.store');
         Route::get('/edit/{id}', [BukuTamuController::class, 'edit'])->name('manajemen_buku_tamu.edit');

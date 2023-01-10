@@ -3,9 +3,12 @@
 @section('content')
     <div class="container mt-5"> 
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <h1>Buku Tamu GAKKUM</h1>
                 <a href="{{ route('manajemen_buku_tamu.create') }}" class="btn btn-primary">+ Tambah Tamu</a>
+            </div>
+            <div class="" style="margin-top: 60px;">
+                <a href="{{ route('buku_tamu.export') }}" class="btn btn-success"> Export</a>
             </div>
         </div>
             <div class="row">
