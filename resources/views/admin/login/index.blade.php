@@ -22,7 +22,7 @@
       <h1><b>GAKKUM</b></h1>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Masuk Ke Dashboard</p>
+      <p class="login-box-msg">Masuk Ke Dashboard Admin</p>
 
       <form action="{{ route('login.authenticate') }}" method="post">
         @csrf
@@ -30,7 +30,7 @@
           <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="nav-icon fas fa-user"></span>
             </div>
           </div>
         </div>

@@ -24,6 +24,15 @@ class DashboardController extends Controller
     {
         return view('home.home.index');
     }
+    public function profil()
+    {
+        return view('home.profil.index');
+    }
+
+    public function contact()
+    {
+        return view('home.contact.index');
+    }
 
     public function survey()
     {

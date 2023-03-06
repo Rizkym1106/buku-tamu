@@ -50,8 +50,6 @@
             <div class=" text-center mt-5 ">
                 <h1 >Data Tamu</h1>    
             </div>
-
-    
             <div class="row ">
                 <div class="col-lg-7 mx-auto">
                     <div class="card mt-2 mx-auto p-4 bg-light">
@@ -81,7 +79,7 @@
                                     </div>
                                     <center>
                                         <div class="form-group">
-                                            <input type="submit" value="Selanjutnya" class="btn btn-primary my-4">
+                                            <input type="submit" value="Selanjutnya" class="btn btn-success my-4">
                                         </div>
                                     </center>
                                 </form>

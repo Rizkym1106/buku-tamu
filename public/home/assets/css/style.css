@@ -122,17 +122,17 @@ button.btn-secondary:hover{
 	margin-left: 5px;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link:hover{
-	color: #1273eb;
+	color:#228B22;
 	border-radius: 4.8px;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active{
-	color: #1273eb;
+	color:#228B22;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active:before{
 	content: "";
 	position: absolute;
 	width: 40px;
-	background: #1273eb;
+	background:#228B22;
 	height: 5px;
 	top: 0px;
 	left: 0px;
@@ -142,7 +142,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 40px;
-	background: #1273eb;
+	background:#228B22;
 	height: 5px;
 	bottom: 0px;
 	right: 0px;
@@ -152,7 +152,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 0px;
-	background: #1273eb;
+	background:#228B22;
 	height: 5px;
 	top: 0px;
 	left: 0px;
@@ -167,7 +167,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 0px;
-	background: #1273eb;
+	background:#228B22;
 	height: 5px;
 	bottom: 0px;
 	right: 0px;
@@ -276,7 +276,7 @@ button.btn-secondary:hover{
 	background: #323232;
 }
 .slider-main .carousel .carousel-indicators .active{
-	background: #1273eb;
+	background:#32CD32
 }
 .slider-main .carousel .carousel-item .carousel-caption h3{
 	font-size: 75px;
@@ -606,7 +606,7 @@ button.btn-secondary:hover{
 	height: 50px;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-image: url(../images/bg-bdr2.png);
+	/* background-image: url(../images/bg-bdr2.png); */
 }
 .touch-line p{
 	color: #ffffff;

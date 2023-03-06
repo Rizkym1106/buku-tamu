@@ -26,11 +26,11 @@
                             <td>{{ $item->pertanyaan }}</td>
                             <td>{{ $item->keterangan }}</td>
                             <td>
-                                <a class="badge badge-danger m-1" href="{{ route('pertanyaan.destroy', $item->id) }}" onclick=" return confirm('Apakah anda ingin menghapus data ini?')">
-                                    <span class="fa fa-trash"></span> Hapus
-                                </a>
                                 <a class="badge badge-warning m-1" href="{{ route('pertanyaan.edit', $item->id) }}">
                                     <span class="fa fa-edit"> Edit</span>
+                                </a>
+                                <a class="badge badge-danger m-1" href="{{ route('pertanyaan.destroy', $item->id) }}" onclick=" return confirm('Apakah anda ingin menghapus data ini?')">
+                                    <span class="fa fa-trash"></span> Hapus
                                 </a>
                             </td>
                         </tr>

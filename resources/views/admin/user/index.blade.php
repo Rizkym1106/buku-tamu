@@ -29,7 +29,7 @@
                                 <td>{{$data->username}}</td>
                                 <td>{{$data->role->nama}}</td>
                                 <td>
-                                    <a class="badge badge-info m-1" href="{{ route('user.edit', $data->id) }}">
+                                    <a class="badge badge-warning m-1" href="{{ route('user.edit', $data->id) }}">
                                         <span class="fa fa-edit"></span> Edit
                                     </a>
                                     <a class="badge badge-danger m-1" href="{{ route('user.destroy', $data->id) }}" onclick=" return confirm('Apakah anda ingin menghapus data ini?')">

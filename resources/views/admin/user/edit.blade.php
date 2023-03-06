@@ -42,7 +42,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary my-4">Ubah Data</button>
+                            <button type="submit" class="btn btn-success my-4">Ubah Data</button>
                         </div>
                         <div class="form-group mt-2">
                             <a href="{{ route('dashboard.index') }}">

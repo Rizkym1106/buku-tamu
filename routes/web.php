@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\UserController;
 use App\http\Controllers\admin\PertanyaanController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'beranda'], function(){
     Route::get('/', [DashboardController::class, 'homepage'])->name('dashboard.homepage');
     Route::get('/survey', [DashboardController::class, 'survey'])->name('dashboard.survey');
+    Route::get('/profil', [DashboardController::class, 'profil'])->name('dashboard.profil');
+    Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
     Route::get('/pertanyaan/{id}', [DashboardController::class, 'pertanyaan'])->name('dashboard.pertanyaan');
     Route::post('/survey-pertanyaan/{id}', [DashboardController::class, 'hasil'])->name('survey.pertanyaan.hasil');
     
