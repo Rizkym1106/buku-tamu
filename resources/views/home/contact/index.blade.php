@@ -24,7 +24,7 @@
                 <div class="address mt-3">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Lokasi:</h4>
-                    <p>Jl. Perintis Kemerdekaan Km.14</p>
+                    <p>Jl. Batara Bira No.27</p>
                 </div>
                     <div class="address mt-3">
                     <i class="bi bi-envelope"></i>

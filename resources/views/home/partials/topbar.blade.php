@@ -16,7 +16,7 @@
                 <div class="contact-details">
                     <ul>
                         <li><i class="fas fa-phone fa-rotate-90"></i> +62-21-5705086</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Jl. Perintis Kemerdekaan KM.14</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Batara bira No.27</li>
                     </ul>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BukuTamu;
 use App\Models\ReviewRespon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SurveyKepuasanController extends Controller
 {
@@ -43,22 +44,57 @@ class SurveyKepuasanController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $data = new BukuTamu;
 
-        $data->nama = $request->nama;
-        $data->alamat = $request->alamat;
-        $data->waktu_kedatangan = $request->waktu_kedatangan;
-        $data->telfon = $request->telfon;
+        $this->validate($request, [
+            'nama' => 'required|min:3|max:20',
+            'alamat' => 'required',
+            'instansi' => 'required',
+            'email' => 'required|email',
+            'telfon' => 'required',
+            // 'foto' => 'required|mimes:jpeg,png,jpg'
+        ], [
+            'nama.required' => 'Nama Harus Diisi',
+            'nama.min' => 'Nama Minimal 3 Karakter',
+            'nama.max' => 'Nama Maksimal 20 Karakter',
+            'instansi.required' => 'Instansi Harus Diisi',
+            'email.required' => 'Email Harus Diisi',
+            'telfon.required' => 'Nomor Telfon Harus Diisi',
+            // 'foto.required' => 'Foto Harus diupload'
+        ]);
 
-        if(isset($request->foto)) {
-            $namaFile = 'foto_'.time().$request->foto->getClientOriginalName();
-            $path = 'public/buku_tamu';
-            $request->foto->storeAs($path, $namaFile);
-            $data->foto = $namaFile;
+        $bukuTamu= new Bukutamu;
+        $bukuTamu->nama = $request->nama;
+        $bukuTamu->alamat = $request->alamat;
+        $bukuTamu->instansi = $request->instansi;
+        $bukuTamu->email = $request->email;
+        $bukuTamu->telfon = $request->telfon;
+
+        // if(isset($request->foto)) {
+        //     $namaFile = 'foto_'.time().$request->foto->getClientOriginalName();
+        //     $path = 'public/buku_tamu';
+        //     $request->foto->storeAs($path, $namaFile);
+        //     $bukuTamu->foto = $namaFile;
+        // }
+
+        if($request->image != null){
+            $img = $request->image;
+            $Path = '/public/buku_tamu/';
+            
+            $image_parts = explode(";base64,", $img);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = uniqid() . '.png';
+            
+            $file = $Path . $fileName;
+            Storage::put($file, $image_base64);
+            $bukuTamu->foto = $fileName;
         }
+        
 
-        $data->save();
-        return redirect()->route('dashboard.pertanyaan', ['id' => $data->id]);
+        $bukuTamu->save();
+        return redirect()->route('dashboard.homepage');
     }
 
     /**

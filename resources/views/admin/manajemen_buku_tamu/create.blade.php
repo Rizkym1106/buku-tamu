@@ -22,23 +22,27 @@
                         @csrf
                         <div class="form-group">
                             <label for="nama">Nama </label>
-                            <input type="text" name="nama" class="form-control" placeholder="Milea Adnan Husain">
+                            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" placeholder="Nama Lengkap">
                         </div>
                         <div class="form-group">
                             <label for="nama">Alamat </label>
-                            <input type="text" name="alamat" class="form-control" placeholder="Jln buah batu">
+                            <input type="text" name="alamat" class="form-control" value="{{ old('alamat') }}" placeholder="Alamat Lengkap">
                         </div>
                         <div class="form-group">
-                            <label for="nama">Waktu Kedatangan </label>  
-                            <input type="date" name="waktu kedatangan" class="form-control">
+                            <label for="nama">Instansi </label>  
+                            <input type="text" name="instansi" class="form-control"  value="{{ old('instansi') }}" placeholder="Instasi Kamu">
+                        </div>
+                        <div class="form-group">
+                            <label for="nama">Email </label>
+                            <input type="text" name="email" class="form-control" value="{{ old('email') }}" placeholder="Alamat Email">
                         </div>
                         <div class="form-group">
                             <label for="nama">Telfon </label>
-                            <input type="numeric" name="telfon" class="form-control">
+                            <input type="numeric" name="telfon" class="form-control" value="{{ old('telfon') }}" placeholder="Nomor Telepon">
                         </div>
                         <div class="form-group">
                             <label for="avatar">Foto </label>
-                            <input type="file" name="foto" class="form-control">
+                            <input type="file" accept="image/png, image/gif, image/jpeg" name="foto" class="form-control">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary my-4">Tambah Data</button>

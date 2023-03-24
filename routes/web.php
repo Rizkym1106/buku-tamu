@@ -7,7 +7,12 @@ use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\SurveyKepuasanController;
 use App\Http\Controllers\admin\UserController;
 use App\http\Controllers\admin\PertanyaanController;
+use App\Http\Controllers\admin\WebcamController;
+use App\Http\Controllers\KirimEmailController;
+use App\Mail\kirimEmail;
 use Illuminate\Auth\Events\Login;
+use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -23,7 +28,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login.index');
+    return redirect()->route('dashboard.homepage');
 });
 
 Route::group(['prefix' => 'beranda'], function(){
@@ -31,11 +36,15 @@ Route::group(['prefix' => 'beranda'], function(){
     Route::get('/survey', [DashboardController::class, 'survey'])->name('dashboard.survey');
     Route::get('/profil', [DashboardController::class, 'profil'])->name('dashboard.profil');
     Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
-    Route::get('/pertanyaan/{id}', [DashboardController::class, 'pertanyaan'])->name('dashboard.pertanyaan');
-    Route::post('/survey-pertanyaan/{id}', [DashboardController::class, 'hasil'])->name('survey.pertanyaan.hasil');
-    
-    
-    Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey_kepuasan_tamu.store');
+    Route::get('/pertanyaan', [DashboardController::class, 'pertanyaan'])->name('dashboard.pertanyaan');
+    Route::post('/survey-pertanyaan', [DashboardController::class, 'hasil'])->name('survey.pertanyaan.hasil');
+
+    Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey.store');
+
+    Route::get('/webcam', [WebcamController::class, 'index'])->name('webcam.capture');
+    Route::post('/webcam', [WebcamController::class, 'store'])->name('webcam.capture.post');
+
+    Route::get('/kirim-email/{email}', [KirimEmailController::class, 'index'])->name('kirim.email');
 
 });
 Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']], function(){
@@ -66,9 +75,9 @@ Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']
     Route::group(['prefix' => 'survey_kepuasan_tamu'], function(){
         Route::get('/', [SurveyKepuasanController::class, 'index'])->name('survey_kepuasan_tamu.index');
         Route::get('/create', [SurveyKepuasanController::class, 'create'])->name('survey_kepuasan_tamu.create');
-        // Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey_kepuasan_tamu.store');
+        Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey_kepuasan_tamu.store');
         Route::get('/edit/{id}', [SurveyKepuasanController::class, 'edit'])->name('survey_kepuasan_tamu.edit');
-        Route::post('/update{id}', [SurveyKepuasanController::class, 'update'])->name('survey_kepuasan_tamu.update');
+        Route::post('/update/{id}', [SurveyKepuasanController::class, 'update'])->name('survey_kepuasan_tamu.update');
         Route::get('/destroy/{id}', [SurveyKepuasanController::class, 'destroy'])->name('survey_kepuasan_tamu.destroy');
 
     });

@@ -4,7 +4,7 @@
     
     <section>
         <div class="container mt-5">
-            <h1>Buku Tamu</h1>
+            <h1>Buku Pertanyaan</h1>
             <div class="row">
                 <div class="col-lg-8">
                     {{-- menampilkan error validasi --}}

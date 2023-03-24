@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->string('nama');
             $table->string('alamat');
-            $table->date('waktu_kedatangan');
+            $table->string('instansi');
+            $table->string('email');
             $table->string('telfon');
             $table->timestamps();
         });

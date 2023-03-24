@@ -3,7 +3,8 @@
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Survey Kepuasan Tamu</title>
+        <title>Data Tamu</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
         <link href='#' rel='stylesheet'>
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -43,6 +44,7 @@
                 margin-left: 10px;
                 margin-right: 10px;
             }
+            #results { padding:20px; border:1px solid; background:#ccc; }
         </style>
     </head>
     <body className='snippet-body'>
@@ -55,31 +57,44 @@
                     <div class="card mt-2 mx-auto p-4 bg-light">
                         <div class="card-body bg-light">
                             <div class = "container">
-                                <form action="{{ route('survey_kepuasan_tamu.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('survey.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label for="nama">Nama </label>
-                                        <input type="text" name="nama" class="form-control" placeholder="Milea Adnan Husain">
+                                        <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" placeholder="Nama Lengkap">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama">Alamat </label>
-                                        <input type="text" name="alamat" class="form-control" placeholder="Jln buah batu">
+                                        <input type="text" name="alamat" class="form-control" value="{{ old('alamat') }}" placeholder="Alamat Lengkap">
                                     </div>
                                     <div class="form-group">
-                                        <label for="nama">Waktu Kedatangan </label>  
-                                        <input type="date" name="waktu kedatangan" class="form-control">
+                                        <label for="nama">Instansi </label>  
+                                        <input type="text" name="instansi" class="form-control"  value="{{ old('instansi') }}" placeholder="Instasi Kamu">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama">Email </label>
+                                        <input type="text" name="email" class="form-control" value="{{ old('email') }}" placeholder="Alamat Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="nama">Telfon </label>
-                                        <input type="numeric" name="telfon" class="form-control">
+                                        <input type="numeric" name="telfon" class="form-control" value="{{ old('telfon') }}" placeholder="Nomor Telepon">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="avatar">Foto </label>
-                                        <input type="file" name="foto" class="form-control">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="my_camera"></div>
+                                            <br/>
+                                            <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                                            <input type="hidden" name="image" class="image-tag" id="img-tag">
+                                        </div> 
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="results">Gambar akan muncul disini</div>
+                                        </div>
                                     </div>
                                     <center>
                                         <div class="form-group">
-                                            <input type="submit" value="Selanjutnya" class="btn btn-success my-4">
+                                            <button type="submit" class="btn btn-success my-4">Kirim Data</button>
                                         </div>
                                     </center>
                                 </form>
@@ -92,15 +107,37 @@
         </div>
         <!-- /.row-->
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
         <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
         <script type='text/javascript' src='#'></script>
         <script type='text/javascript' src='#'></script>
         <script type='text/javascript' src='#'></script>
         <script type='text/javascript'>#</script>
-        <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
-        myLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        });</script>
+        <script type='text/javascript'>
+            var myLink = document.querySelector('a[href="#"]');
+            myLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            });
+        </script>
+        <script language="JavaScript">
+            Webcam.set({
+                width: 490,
+                height: 350,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+            
+            Webcam.attach( '#my_camera' );
+            
+            function take_snapshot() {
+                Webcam.snap( function(data_uri) {
+                    $("#img-tag").val(data_uri);
+                    console.log(data_uri)
+                    document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                } );
+            }
+        </script>
 
     </body>
 </html>

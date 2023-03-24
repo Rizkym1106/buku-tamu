@@ -24,6 +24,7 @@ class DashboardController extends Controller
     {
         return view('home.home.index');
     }
+    
     public function profil()
     {
         return view('home.profil.index');
@@ -39,21 +40,19 @@ class DashboardController extends Controller
         return view('admin.dashboard.survey');
     }
 
-    public function pertanyaan($id) {
+    public function pertanyaan() {
         $data = [
-            'id' => $id,
             'pertanyaans' => pertanyaan::all(),
             'respons' => respon::all(),
         ];
         return view('admin.dashboard.pertanyaan', $data);
     }
 
-    public function hasil(Request $request, $id) {
+    public function hasil(Request $request) {
 
         foreach($request->pertanyaan as $key => $value) {
             $data = new ReviewRespon;
             $data->pertanyaan_id = $value;
-            $data->buku_tamu_id = $request->buku_tamu_id;
             $data->respon_id = $request['respon'][$key];
             $data->save();
         }

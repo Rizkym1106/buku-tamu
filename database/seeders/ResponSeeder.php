@@ -15,29 +15,29 @@ class ResponSeeder extends Seeder
      */
     public function run()
     {
+        // DB::table('respons')->insert([
+        //     'jawaban' => 'tidak', 
+        //     'skor' => '1'
+        // ]);
+
         DB::table('respons')->insert([
-            'jawaban' => 'tidak', 
+            'jawaban' => 'kurang',
             'skor' => '1'
         ]);
 
         DB::table('respons')->insert([
-            'jawaban' => 'kurang',
+            'jawaban' => 'cukup',
             'skor' => '2'
         ]);
 
         DB::table('respons')->insert([
-            'jawaban' => 'cukup',
+            'jawaban' => 'normal',
             'skor' => '3'
         ]);
 
         DB::table('respons')->insert([
-            'jawaban' => 'normal',
-            'skor' => '4'
-        ]);
-
-        DB::table('respons')->insert([
             'jawaban' => 'sangat',
-            'skor' => '5'
+            'skor' => '4'
         ]);
     }
 }

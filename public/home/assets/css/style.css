@@ -970,34 +970,34 @@ footer p {
 }
 
 
-.hb-google-plus,
-.hb-google-plus:before,
-.hb-google-plus:after {
-	background: #db514f;
-	border-color: #db514f;
+.hb-youtube,
+.hb-youtube:before,
+.hb-youtube:after {
+	background: #cc181e;
+	border-color: #cc181e;
 	color: #ffffff;
 }
-.hb-google-plus:hover,
-.hb-google-plus:hover:before,
-.hb-google-plus:hover:after {
+.hb-youtube:hover,
+.hb-youtube:hover:before,
+.hb-youtube:hover:after {
 	background:transparent;
-	border-color: #db514f;
-	color: #db514f;
+	border-color: #cc181e;
+	color: #cc181e;
 }
  
 /* google-plus inverts */
-.hb-google-plus-inv,
-.hb-google-plus-inv:after,
-.hb-google-plus-inv:before {
+.hb-youtube-inv,
+.hb-youtube-inv:after,
+.hb-youtube-inv:before {
 	background:transparent;
-	border-color: #db514f;
-	color: #db514f;
+	border-color: #cc181e;
+	color: #cc181e;
 }
-.hb-google-plus-inv:hover,
-.hb-google-plus-inv:hover:after,
-.hb-google-plus-inv:hover:before {
-	background: #db514f;
-	border-color: #db514f;
+.hb-youtube-inv:hover,
+.hb-youtube-inv:hover:after,
+.hb-youtube-inv:hover:before {
+	background: #cc181e;
+	border-color: #cc181e;
 	color: #ffffff;
 }
 

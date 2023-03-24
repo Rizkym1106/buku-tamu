@@ -20,8 +20,10 @@
                     <th>Foto</th>
                     <th>Nama</th>
                     <th>Alamat</th>
-                    <th>Waktu Kedatangan</th>
+                    <th>Instansi</th>
+                    <th>Email</th>
                     <th>Telfon</th>
+                    <th>Aksi</th>
                 </tr>
                 </thead> 
                 <tbody>
@@ -30,13 +32,17 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 @if($item->foto)
-                                <img width="100px" height="100px" src="{{asset('storage/buku_tamu/'.$item->foto)}}" alt="">
+                                <img width="140px" height="120px" src="{{asset('storage/buku_tamu/'.$item->foto)}}" alt="">
                                 @endif
                             </td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->alamat }}</td>
-                            <td>{{ Carbon\Carbon::parse($item->waktu_kedatangan)->isoFormat('DD MMMM Y') }}</td>
+                            <td>{{ $item->instansi }}</td>
+                            <td>{{ $item->email }}</td>
                             <td>{{ $item->telfon }}</td>
+                            <td>
+                                <a href="{{ route('kirim.email', $item->email) }}" class="btn btn-primary">Pulangkan</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

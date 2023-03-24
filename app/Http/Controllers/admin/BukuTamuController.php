@@ -48,16 +48,18 @@ class BukuTamuController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|min:5|max:20',
+            'nama' => 'required|min:3|max:20',
             'alamat' => 'required',
-            'waktu_kedatangan' => 'required',
+            'instansi' => 'required',
+            'email' => 'required|email',
             'telfon' => 'required',
             'foto' => 'required|mimes:jpeg,png,jpg'
         ], [
             'nama.required' => 'Nama Harus Diisi',
-            'nama.min' => 'Nama Minimal 5 Karakter',
+            'nama.min' => 'Nama Minimal 3 Karakter',
             'nama.max' => 'Nama Maksimal 20 Karakter',
-            'waktu_kedatangan.required' => 'Waktu Kedatangan Harus Diisi',
+            'instansi.required' => 'Instansi Harus Diisi',
+            'email.required' => 'Email Harus Diisi',
             'telfon.required' => 'Nomor Telfon Harus Diisi',
             'foto.required' => 'Foto Harus diupload'
         ]);
@@ -65,7 +67,8 @@ class BukuTamuController extends Controller
         $bukuTamu= new Bukutamu;
         $bukuTamu->nama = $request->nama;
         $bukuTamu->alamat = $request->alamat;
-        $bukuTamu->waktu_kedatangan = $request->waktu_kedatangan;
+        $bukuTamu->instansi = $request->instansi;
+        $bukuTamu->email = $request->email;
         $bukuTamu->telfon = $request->telfon;
 
         if($request->foto){

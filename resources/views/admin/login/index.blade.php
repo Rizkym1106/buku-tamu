@@ -19,10 +19,10 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <h1><b>GAKKUM</b></h1>
+      <h1><b>KLHK</b></h1>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Masuk Ke Dashboard Admin</p>
+      <p class="login-box-msg">Masuk Ke Dashboard</p>
 
       <form action="{{ route('login.authenticate') }}" method="post">
         @csrf

@@ -57,7 +57,7 @@ label {
         <body className='snippet-body'>
         <div class="container">
     <div class=" text-center mt-5 ">
-            <h1 >Data Tamu</h1>    
+            <h1 >Survey Kepuasan</h1>    
     </div>
 
     
@@ -66,9 +66,8 @@ label {
     <div class="card mt-2 mx-auto p-4 bg-light">
         <div class="card-body bg-light">
             <div class = "container">
-                <form action="{{ route('survey.pertanyaan.hasil', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('survey.pertanyaan.hasil') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="buku_tamu_id" value="{{ $id }}">
                     @foreach ($pertanyaans as $item)
                         <div class="form-group">
                             <label for="nama">{{ $item->pertanyaan }} </label>
@@ -82,7 +81,7 @@ label {
                         </div>
                     @endforeach
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary my-4">Tambah Survey</button>
+                        <button type="submit" class="btn btn-success my-4">Kirim Survey</button>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@
     <div class="container mt-5"> 
         <div class="row">
             <div class="col-lg-8">
-                <h1>Buku Tamu GAKKUM</h1>
+                <h1>Buku Pertanyaan</h1>
                 <a href="{{ route('pertanyaan.create') }}" class="btn btn-primary">+ Tambah Pertanyaan</a>
             </div>
         </div>
