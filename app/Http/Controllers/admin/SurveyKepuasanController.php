@@ -21,7 +21,6 @@ class SurveyKepuasanController extends Controller
         $data = [
             'hasil' => $respon
         ];
-        // dd($data);
         return view('admin.survey_kepuasan_tamu.index', $data);
     }
 

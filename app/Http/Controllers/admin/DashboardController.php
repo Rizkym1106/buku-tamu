@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BukuTamu;
 use App\Models\pertanyaan;
 use App\Models\respon;
 use App\Models\ReviewRespon;
@@ -40,8 +41,10 @@ class DashboardController extends Controller
         return view('admin.dashboard.survey');
     }
 
-    public function pertanyaan() {
+    public function pertanyaan($id) {
+        $bukuTamu = BukuTamu::where('id', $id)->first();
         $data = [
+            'bukuTamu' => $bukuTamu,
             'pertanyaans' => pertanyaan::all(),
             'respons' => respon::all(),
         ];
@@ -54,6 +57,7 @@ class DashboardController extends Controller
             $data = new ReviewRespon;
             $data->pertanyaan_id = $value;
             $data->respon_id = $request['respon'][$key];
+            $data->buku_tamu_id = $request->buku_tamu_id;
             $data->save();
         }
         return redirect()->route('dashboard.homepage');

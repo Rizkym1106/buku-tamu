@@ -36,7 +36,7 @@ Route::group(['prefix' => 'beranda'], function(){
     Route::get('/survey', [DashboardController::class, 'survey'])->name('dashboard.survey');
     Route::get('/profil', [DashboardController::class, 'profil'])->name('dashboard.profil');
     Route::get('/contact', [DashboardController::class, 'contact'])->name('dashboard.contact');
-    Route::get('/pertanyaan', [DashboardController::class, 'pertanyaan'])->name('dashboard.pertanyaan');
+    Route::get('/pertanyaan/{id}', [DashboardController::class, 'pertanyaan'])->name('dashboard.pertanyaan');
     Route::post('/survey-pertanyaan', [DashboardController::class, 'hasil'])->name('survey.pertanyaan.hasil');
 
     Route::post('/store', [SurveyKepuasanController::class, 'store'])->name('survey.store');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'beranda'], function(){
     Route::get('/webcam', [WebcamController::class, 'index'])->name('webcam.capture');
     Route::post('/webcam', [WebcamController::class, 'store'])->name('webcam.capture.post');
 
-    Route::get('/kirim-email/{email}', [KirimEmailController::class, 'index'])->name('kirim.email');
+    Route::get('/kirim-email/{id}', [KirimEmailController::class, 'index'])->name('kirim.email');
 
 });
 Route::group(['prefix' => 'dashboard', 'middlewware' => ['auth', 'checklevel:1']], function(){

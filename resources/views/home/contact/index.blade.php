@@ -24,12 +24,12 @@
                 <div class="address mt-3">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Lokasi:</h4>
-                    <p>Jl. Batara Bira No.27</p>
+                    <p>Jl. Batara Bira No.09, Baddoka, Kelurahan Pai Kecamatan Biring Kanaya Kota Makassar Sulawesi Selatan</p>
                 </div>
                     <div class="address mt-3">
                     <i class="bi bi-envelope"></i>
                     <h4>Email:</h4>
-                    <p>pusdatin@menlhk.go.id</p>
+                    <p>bpphlhksulawesi@yahoo.com</p>
     
                 <div class="address mt-3">
                     <i class="bi bi-clock"></i>

@@ -22,10 +22,9 @@
                 <h5 class="headin5_amrc col_white_amrc pt2">Kontak Kami</h5>
                 <!--headin5_amrc-->
                 <ul class="footer_ul_amrc">
-                    <li><a href="#"><i class="fas fa-mobile"></i>021-5730191 </a></li>
-                    <li><a href="#"><i class="fas fa fa-phone">+62-21-5705086</i></a></li>
-                    <li><a href="#"><i class="fas fa fa-envelope"></i>pusdatin@menlhk.go.id</a></li>
-                    <li><a href="#"><i class="fas fa fa-map-marker"></i>Jl. Perintis Kemerdekaan KM.14</a></li>
+                    <li><a href="#"><i class="fas fa fa-phone">+62-811-4411-441</i></a></li>
+                    <li><a href="#"><i class="fas fa fa-envelope"></i>bpphlhksulawesi@yahoo.com</a></li>
+                    <li><a href="#"><i class="fas fa fa-map-marker"></i>Jl. Batara Bira No.9</a></li>
                 </ul>
                 <!--footer_ul_amrc ends here-->
             </div>

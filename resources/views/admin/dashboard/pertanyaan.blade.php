@@ -57,7 +57,12 @@ label {
         <body className='snippet-body'>
         <div class="container">
     <div class=" text-center mt-5 ">
-            <h1 >Survey Kepuasan</h1>    
+            <h1 >Survey Kepuasan</h1>
+            <center>
+                <div class="alert alert-primary " style="width:57%; text-align:center" role="alert">
+                    <p>Selamat Datang <strong>{{ $bukuTamu->nama }}</strong>, Silahkan mengisi survey yang kami sediakan !</p> 
+                </div>     
+            </center>  
     </div>
 
     
@@ -80,6 +85,8 @@ label {
                             </select>
                         </div>
                     @endforeach
+
+                    <input type="hidden" name="buku_tamu_id" value="{{ $bukuTamu->id }}">
                     <div class="form-group">
                         <button type="submit" class="btn btn-success my-4">Kirim Survey</button>
                     </div>

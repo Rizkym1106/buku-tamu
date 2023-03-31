@@ -41,7 +41,7 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->telfon }}</td>
                             <td>
-                                <a href="{{ route('kirim.email', $item->email) }}" class="btn btn-primary">Pulangkan</a>
+                                <a href="{{ route('kirim.email', $item->id) }}" class="btn btn-primary">Pulangkan</a>
                             </td>
                         </tr>
                     @endforeach

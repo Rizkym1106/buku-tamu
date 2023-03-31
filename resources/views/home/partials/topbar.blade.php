@@ -15,8 +15,8 @@
             <div class="col-lg-6">
                 <div class="contact-details">
                     <ul>
-                        <li><i class="fas fa-phone fa-rotate-90"></i> +62-21-5705086</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Jl. Batara bira No.27</li>
+                        <li><i class="fas fa-phone fa-rotate-90"></i> +62-811-4411-441</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Batara bira No.9</li>
                     </ul>
                 </div>
             </div>
