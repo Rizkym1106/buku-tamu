@@ -31,31 +31,32 @@
                 Dashboard
               </p>
             </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('manajemen_buku_tamu.index') }}" class="nav-link {{ (request()->routeIs('manajemen_buku_tamu.index')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Manajemen Buku Tamu
-                </p>
-              </a>
-              <li class="nav-item">
-                <a href="{{ route("survey_kepuasan_tamu.index") }}" class="nav-link {{ (request()->routeIs('survey_kepuasan_tamu.index')) ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-poll-h"></i>
-                  <p>
-                    Survey Kepuasan Tamu
-                  </p>
-                </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('user.index') }}" class="nav-link {{ (request()->routeIs('user.index')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Admin
-                </p>
-              </a>
-            </li>
-          </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('manajemen_buku_tamu.index') }}" class="nav-link {{ (request()->routeIs('manajemen_buku_tamu.index')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Manajemen Buku Tamu
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('survey_kepuasan_tamu.index') }}" class="nav-link {{ (request()->routeIs('survey_kepuasan_tamu.index')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-poll-h"></i>
+              <p>
+                Survey Kepuasan Tamu
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('user.index') }}" class="nav-link {{ (request()->routeIs('user.index')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Admin
+              </p>
+            </a>
+          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

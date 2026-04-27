@@ -25,6 +25,41 @@
   <link rel="stylesheet" href="{{ URL::asset('admin/assets/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ URL::asset('admin/assets/plugins/summernote/summernote-bs4.min.css') }}">
+  
+  <!-- Custom CSS untuk fix sidebar toggle -->
+  <style>
+    .sidebar-mini.sidebar-collapse .main-sidebar {
+      transform: translateX(-100%);
+      width: 250px;
+    }
+    
+    .sidebar-mini:not(.sidebar-collapse) .main-sidebar {
+      transform: translateX(0);
+    }
+    
+    .main-sidebar {
+      transition: transform 0.3s ease-in-out;
+      z-index: 900;
+    }
+    
+    @media (max-width: 767.98px) {
+      .sidebar-mini.sidebar-collapse .main-sidebar {
+        transform: translateX(-100%);
+      }
+      
+      .sidebar-mini:not(.sidebar-collapse) .main-sidebar {
+        transform: translateX(0);
+      }
+      
+      .main-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 900;
+      }
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
